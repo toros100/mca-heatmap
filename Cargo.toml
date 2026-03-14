@@ -1,0 +1,17 @@
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[package]
+name = "mca-heatmap"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+libdeflater = {version = "1.25.2", features = ["freestanding"]}
+image = { version = "0.25.9", default-features = false, features = ["png"] }
+anyhow = "1.0.102"
+wasm-bindgen = "0.2.114"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+rayon = "1.11.0"
+clap = { version = "4.5.60", features = ["derive"] }
